@@ -11,6 +11,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
+import { BusinessUnitTypeBusinessUnit } from './but-bu-selector.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { AppComponent } from './app.component';
         HttpClientModule,
         BrowserAnimationsModule,
         MatButtonModule,
-        MatIconModule
+        MatIconModule,
+        BusinessUnitTypeBusinessUnit
     ],
     providers: [],
     bootstrap: [AppComponent]
