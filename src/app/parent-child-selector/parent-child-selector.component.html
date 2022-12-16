@@ -17,7 +17,7 @@
                     [displayWith]="parentDisplayFn"
                     autoActiveFirstOption
                     (optionSelected)="parentSelected($event)">
-    <mat-option *ngFor="let parent of filteredParents$ | async"
+                 <mat-option *ngFor="let parent of filteredParents$ | async"
                 [value]="parent">
       {{parentDisplayFn(parent)}}
     </mat-option>
@@ -52,9 +52,19 @@
                     autoActiveFirstOption
                     (optionSelected)="childSelected($event)">
 
+
+                    <ng-container *ngIf="(hasResults$ |async) === false">
+
     <mat-option *ngFor="let child of children$ | async"
                 [value]="child">
       {{childrenDisplayFn(child)}}
     </mat-option>
+  </ng-container>
+                  
+  <mat-option *ngIf="hasResults$ | async">
+Not Results found
+  </mat-option>
   </mat-autocomplete>
 </mat-form-field>
+
+<div>{{hasResults$ | async}}</div>

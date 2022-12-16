@@ -19,6 +19,8 @@ export abstract class ParentChildSelectorComponent<ParentEntity, ChildEntity> im
     @ViewChild('parentInput', { static: true }) parentInput!: ElementRef;
     @ViewChild('childrenInput', { static: true }) childrenInput!: ElementRef;
 
+hasResults$ = this.children$.pipe(map(_ => _.length > 0));
+
     isLoading = false;
 
     protected _subscriptions: Array<Subscription> = [];

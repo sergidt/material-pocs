@@ -1,0 +1,20 @@
+<div class="selected-items--container"
+     [matMenuTriggerFor]="menu"
+     (menuOpened)="toggleIcon(true)"
+     matRipple>
+  <div>{{selectedItems.length}} selected items</div>
+  <mat-icon>{{icon}}</mat-icon>
+</div>
+
+<mat-menu #menu="matMenu"
+          (closed)="toggleIcon(false)"
+          yPosition="below"
+          xPosition="before">
+  <div class="items">
+    <div class="selected-item--description"
+         *ngFor="let item of selectedItems">
+      <mat-icon>cancel</mat-icon>
+      <div>{{item}}</div>
+    </div>
+  </div>
+</mat-menu>

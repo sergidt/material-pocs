@@ -12,14 +12,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { BusinessUnitTypeBusinessUnit } from './but-bu-selector.component';
-
+import { SelectedItemsComponent } from './selected-items/selected-items.component';
+import { SelectableTableComponent } from './selectable-table/selectable-table.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MaterialModule } from './material.module';
+import { AddColumnDirective } from './add-column.directive';
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        SelectableTableComponent,
+        AddColumnDirective
     ],
     imports: [
+        MaterialModule,
         BrowserModule,
-        MatInputModule,
         FormsModule,
         ReactiveFormsModule,
         MatFormFieldModule,
@@ -28,7 +34,8 @@ import { BusinessUnitTypeBusinessUnit } from './but-bu-selector.component';
         BrowserAnimationsModule,
         MatButtonModule,
         MatIconModule,
-        BusinessUnitTypeBusinessUnit
+        BusinessUnitTypeBusinessUnit,
+        SelectedItemsComponent
     ],
     providers: [],
     bootstrap: [AppComponent]
