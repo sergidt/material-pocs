@@ -1,0 +1,123 @@
+<div class="container"
+     appScrollManager
+     #scrollManager="scrollManager">
+
+  <div class="sticky-header">
+    <div class="title">
+      <mat-icon>arrow_back</mat-icon>
+      <h2>Entity detail</h2>
+    </div>
+    <mat-tab-nav-panel #tabPanel>
+      <div mat-tab-nav-bar
+           [tabPanel]="tabPanel">
+      <span class="scroll-anchor"
+            matRipple
+            [appScrollAnchor]="section"
+            *ngFor="let section of scrollManager.sections; let i = index">
+      <span class="section-state"
+            [class.pending-state]="i === 1"
+            [class.error-state]="i === 0"
+            [class.ok-state]="i > 1"
+      ><mat-icon>{{
+          i === 0? 'close': i === 1? 'question_mark': 'check'
+        }}</mat-icon></span>
+        <span>{{section}}</span>
+      </span>
+      </div>
+    </mat-tab-nav-panel>
+  </div>
+
+  <mat-accordion [multi]="true">
+    <mat-expansion-panel appScrollSection="General info"
+                         [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          General info
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum varius duis at consectetur. Euismod in pellentesque massa placerat duis ultricies lacus sed turpis.</p>
+      <p>Nullam non nisi est sit. Sit amet justo donec enim diam vulputate ut pharetra. Dolor purus non enim praesent elementum facilisis. Vel elit scelerisque mauris pellentesque pulvinar pellentesque. Eu consequat ac felis donec et odio pellentesque.
+      </p>
+      <p>
+        A diam sollicitudin tempor id eu nisl nunc mi ipsum. Vel fringilla est ullamcorper eget nulla facilisi etiam. Eu turpis egestas pretium aenean pharetra magna ac placerat. Maecenas sed enim ut sem viverra aliquet eget. Fermentum iaculis eu non diam phasellus.
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum varius duis at consectetur. Euismod in pellentesque massa placerat duis ultricies lacus sed turpis.</p>
+      <p>Nullam non nisi est sit. Sit amet justo donec enim diam vulputate ut pharetra. Dolor purus non enim praesent elementum facilisis. Vel elit scelerisque mauris pellentesque pulvinar pellentesque. Eu consequat ac felis donec et odio pellentesque.
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel appScrollSection=" Address info"
+                         [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Address info
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>Ac tincidunt vitae semper quis. Eget duis at tellus at urna condimentum mattis pellentesque id. Diam donec adipiscing tristique risus nec feugiat in fermentum. Lacus laoreet non curabitur gravida arcu ac tortor. Nec ultrices dui</p>
+      <p>sapien eget. Dolor morbi non arcu risus quis varius quam. Donec massa sapien faucibus et molestie ac feugiat sed. Blandit aliquam etiam erat velit. Turpis massa sed elementum tempus egestas sed sed risus pretium. Augue lacus
+      </p>
+      <p>
+        viverra vitae congue. Volutpat diam ut venenatis tellus in metus vulputate. Sed vulputate mi sit amet mauris.
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum varius duis at consectetur. Euismod in pellentesque massa placerat duis ultricies lacus sed turpis.</p>
+      <p>Nullam non nisi est sit. Sit amet justo donec enim diam vulputate ut pharetra. Dolor purus non enim praesent elementum facilisis. Vel elit scelerisque mauris pellentesque pulvinar pellentesque. Eu consequat ac felis donec et odio pellentesque.
+
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel appScrollSection="Associated entities"
+                         [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Associated entities
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>Ac tincidunt vitae semper quis. Eget duis at tellus at urna condimentum mattis pellentesque id. Diam donec adipiscing tristique risus nec feugiat in fermentum. Lacus laoreet non curabitur gravida arcu ac tortor. Nec ultrices dui</p>
+      <p>sapien eget. Dolor morbi non arcu risus quis varius quam. Donec massa sapien faucibus et molestie ac feugiat sed. Blandit aliquam etiam erat velit. Turpis massa sed elementum tempus egestas sed sed risus pretium. Augue lacus
+      </p>
+      <p>
+        viverra vitae congue. Volutpat diam ut venenatis tellus in metus vulputate. Sed vulputate mi sit amet mauris.
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum varius duis at consectetur. Euismod in pellentesque massa placerat duis ultricies lacus sed turpis.</p>
+      <p>Nullam non nisi est sit. Sit amet justo donec enim diam vulputate ut pharetra. Dolor purus non enim praesent elementum facilisis. Vel elit scelerisque mauris pellentesque pulvinar pellentesque. Eu consequat ac felis donec et odio pellentesque.
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel appScrollSection="Devices"
+                         [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Devices
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>Ac tincidunt vitae semper quis. Eget duis at tellus at urna condimentum mattis pellentesque id. Diam donec adipiscing tristique risus nec feugiat in fermentum. Lacus laoreet non curabitur gravida arcu ac tortor. Nec ultrices dui</p>
+      <p>sapien eget. Dolor morbi non arcu risus quis varius quam. Donec massa sapien faucibus et molestie ac feugiat sed. Blandit aliquam etiam erat velit. Turpis massa sed elementum tempus egestas sed sed risus pretium. Augue lacus
+      </p>
+      <p>
+        viverra vitae congue. Volutpat diam ut venenatis tellus in metus vulputate. Sed vulputate mi sit amet mauris.
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum varius duis at consectetur. Euismod in pellentesque massa placerat duis ultricies lacus sed turpis.</p>
+      <p>Nullam non nisi est sit. Sit amet justo donec enim diam vulputate ut pharetra. Dolor purus non enim praesent elementum facilisis. Vel elit scelerisque mauris pellentesque pulvinar pellentesque. Eu consequat ac felis donec et odio pellentesque.
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel appScrollSection="Related users"
+                         [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Users
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>Ac tincidunt vitae semper quis. Eget duis at tellus at urna condimentum mattis pellentesque id. Diam donec adipiscing tristique risus nec feugiat in fermentum. Lacus laoreet non curabitur gravida arcu ac tortor. Nec ultrices dui</p>
+      <p>sapien eget. Dolor morbi non arcu risus quis varius quam. Donec massa sapien faucibus et molestie ac feugiat sed. Blandit aliquam etiam erat velit. Turpis massa sed elementum tempus egestas sed sed risus pretium. Augue lacus
+      </p>
+      <p>
+        viverra vitae congue. Volutpat diam ut venenatis tellus in metus vulputate. Sed vulputate mi sit amet mauris.
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum varius duis at consectetur. Euismod in pellentesque massa placerat duis ultricies lacus sed turpis.</p>
+      <p>Nullam non nisi est sit. Sit amet justo donec enim diam vulputate ut pharetra. Dolor purus non enim praesent elementum facilisis. Vel elit scelerisque mauris pellentesque pulvinar pellentesque. Eu consequat ac felis donec et odio pellentesque.
+
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+

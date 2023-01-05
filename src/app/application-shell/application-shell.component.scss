@@ -1,0 +1,50 @@
+:host {
+  .main-container {
+    margin: 5%;
+    display: block;
+    position: relative;
+    max-width: 1200px;
+    height: 800px;
+    width: 90%;
+
+    .menu {
+      width: 200px;
+      height: 100%;
+      background-color: #2a2a2a;
+    }
+
+    .header {
+      position: absolute;
+      left: 200px;
+      height: 50px;
+      top: 0;
+      right: 0;
+      z-index: 100;
+
+      img {
+        position: absolute;
+        width: 200px;
+        top: 15px;
+      }
+    }
+
+    .main-content {
+      position: absolute;
+      top: 50px;
+      bottom: 40px;
+      left: 200px;
+      right: 0;
+      padding: 20px 40px;
+      background-color: #f8f8f8;
+    }
+
+    .footer {
+      position: absolute;
+      left: 200px;
+      height: 40px;
+      bottom: 0;
+      right: 0;
+      background-color: #e0e0e0;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Directive, ElementRef, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { MatOption } from '@angular/material/core';
+import { MatLegacyAutocompleteSelectedEvent as MatAutocompleteSelectedEvent } from '@angular/material/legacy-autocomplete';
+import { MatLegacyOption as MatOption } from '@angular/material/legacy-core';
 import {
     BehaviorSubject, debounceTime, distinctUntilChanged, filter, finalize, fromEvent, map, Observable, startWith, Subscription, switchMap, tap
 } from 'rxjs';

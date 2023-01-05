@@ -1,6 +1,6 @@
 import { CdkColumnDef, CdkHeaderCellDef, CdkTable } from '@angular/cdk/table';
 import { AfterViewInit, Component, Directive, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { MatTable } from '@angular/material/table';
+import { MatLegacyTable as MatTable } from '@angular/material/legacy-table';
 
 @Component({
   template: `

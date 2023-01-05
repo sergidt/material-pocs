@@ -1,0 +1,63 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 900px;
+  width: 100%;
+  height: 100%;
+
+  mat-tab-group {
+    margin-bottom: 50px;
+  }
+
+  mat-accordion {
+    overflow-y: auto;
+  }
+}
+
+.scroll-anchor {
+  padding: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.section-state {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+
+  &.error-state {
+    background-color: #c4333c;
+  }
+
+  &.ok-state {
+    background-color: #3BAB79;
+  }
+
+  &.pending-state {
+    background-color: #F2AB35;
+  }
+
+  mat-icon {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+}
+
+.sticky-header {
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  mat-icon {
+    cursor: pointer;
+  }
+}
