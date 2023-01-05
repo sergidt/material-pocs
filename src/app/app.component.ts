@@ -9,10 +9,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
     ngOnInit() {
-        console.clear();
 
         /* let PLAIN_NODES = [...names.slice(0, names.length)];//, ...names.slice(0, names.length)];
-         
+
          function generateTree(
              indent = 0,
              maxLevel = MAX_LEVEL,

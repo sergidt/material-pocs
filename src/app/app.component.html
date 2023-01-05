@@ -12,6 +12,24 @@ addColumn
 
 -->
 
-<app-application-shell>
+<!--app-application-shell>
   <app-stepper-navigator></app-stepper-navigator>
-</app-application-shell>
+</app-application-shell-->
+
+<app-dashboard></app-dashboard>
+
+
+<app-status-feedback-container
+    [loading]="true"
+    [error]="true">
+  <ng-template #errorTmpl>
+    <mat-icon>error</mat-icon>
+    <h3>Error loading realtime connection!</h3>
+  </ng-template>
+</app-status-feedback-container>
+
+<!--
+<ng-template #loadingTmpl>
+    <div>loading</div>
+  </ng-template>
+-->

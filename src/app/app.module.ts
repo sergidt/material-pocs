@@ -13,9 +13,11 @@ import { AddColumnDirective } from './add-column.directive';
 import { AppComponent } from './app.component';
 import { ApplicationShellComponent } from './application-shell/application-shell.component';
 import { BusinessUnitTypeBusinessUnit } from './but-bu-selector.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { MaterialModule } from './material.module';
 import { SelectableTableComponent } from './selectable-table/selectable-table.component';
 import { SelectedItemsComponent } from './selected-items/selected-items.component';
+import { StatusFeedbackContainerComponent } from './status-feedback-container/status-feedback-container.component';
 import { StepperNavigatorComponent } from './stepper-navigator/stepper-navigator.component';
 
 @NgModule({
@@ -38,7 +40,9 @@ import { StepperNavigatorComponent } from './stepper-navigator/stepper-navigator
         BusinessUnitTypeBusinessUnit,
         SelectedItemsComponent,
         StepperNavigatorComponent,
-        ApplicationShellComponent
+        ApplicationShellComponent,
+        StatusFeedbackContainerComponent,
+        DashboardComponent
     ],
     providers: [],
     bootstrap: [AppComponent]
