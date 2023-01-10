@@ -1,41 +1,60 @@
 import { CommonModule } from '@angular/common';
-import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChild, Directive, Input, OnInit, TemplateRef } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ContentViewDirective } from '../content-view.directive';
+
+@Directive({
+    selector: '[errorView]',
+    standalone: true
+})
+export class ErrorViewDirective {
+
+    constructor(public tmpl: TemplateRef<any>) { }
+
+}
+
+@Directive({
+    selector: '[loadingView]',
+    standalone: true
+})
+export class LoadingViewDirective {
+
+    constructor(public tmpl: TemplateRef<any>) { }
+
+}
+
 
 @Component({
     selector: 'app-status-feedback-container',
     standalone: true,
     imports: [CommonModule, MatProgressSpinnerModule, MatIconModule],
-    template: `
-      <div class="spinner-container"
-           *ngIf="loading && !error">
-        <ng-container *ngTemplateOutlet="loadingTmpl || defaultLoadingTmpl"></ng-container>
-      </div>
-
-      <div class="spinner-container"
-           *ngIf="error">
-        <ng-container *ngTemplateOutlet="errorTmpl || defaultErrorTmpl"></ng-container>
-      </div>
-
-      <ng-content></ng-content>
-
-      <ng-template #defaultLoadingTmpl>
-        <mat-spinner
-            color="accent"></mat-spinner>
-      </ng-template>
-
-      <ng-template #defaultErrorTmpl>
-        <mat-icon>report</mat-icon>
-      </ng-template>
-    `,
-    styleUrls: ['./status-feedback-container.component.scss']
+    templateUrl: 'status-feedback-container.component.html',
+    styleUrls: ['./status-feedback-container.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StatusFeedbackContainerComponent {
+export class StatusFeedbackContainerComponent implements AfterContentInit, OnInit{
+
+
     @Input() loading!: boolean | null;
     @Input() error!: boolean | null;
 
-    @ContentChild('loadingTmpl') loadingTmpl!: TemplateRef<any>;
-    @ContentChild('errorTmpl') errorTmpl!: TemplateRef<any>;
+    @ContentChild(ContentViewDirective) contentView!: ContentViewDirective;
+    @ContentChild(LoadingViewDirective) loadingView: LoadingViewDirective | undefined;
+    @ContentChild(ErrorViewDirective) errorView: ErrorViewDirective | undefined;
+
+    ngOnInit(): void {
+        console.log('init');
+
+    }
+
+
+    ngAfterContentInit(): void {
+        console.log(`ContentView: ${this.contentView?.tmpl} `);
+        if (!this.contentView) {
+            throw new Error('ContentViewDirective has not been specified.')
+        }
+
+    }
 }
 

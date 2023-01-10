@@ -14,17 +14,20 @@ import { AppComponent } from './app.component';
 import { ApplicationShellComponent } from './application-shell/application-shell.component';
 import { BusinessUnitTypeBusinessUnit } from './but-bu-selector.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ContentViewDirective } from './content-view.directive';
 import { MaterialModule } from './material.module';
 import { SelectableTableComponent } from './selectable-table/selectable-table.component';
 import { SelectedItemsComponent } from './selected-items/selected-items.component';
-import { StatusFeedbackContainerComponent } from './status-feedback-container/status-feedback-container.component';
+import {
+    ErrorViewDirective, StatusFeedbackContainerComponent
+} from './status-feedback-container/status-feedback-container.component';
 import { StepperNavigatorComponent } from './stepper-navigator/stepper-navigator.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         SelectableTableComponent,
-        AddColumnDirective
+        AddColumnDirective,
     ],
     imports: [
         MaterialModule,
@@ -42,7 +45,9 @@ import { StepperNavigatorComponent } from './stepper-navigator/stepper-navigator
         StepperNavigatorComponent,
         ApplicationShellComponent,
         StatusFeedbackContainerComponent,
-        DashboardComponent
+        DashboardComponent,
+        ErrorViewDirective,
+        ContentViewDirective
     ],
     providers: [],
     bootstrap: [AppComponent]

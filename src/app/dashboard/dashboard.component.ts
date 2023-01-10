@@ -1,12 +1,16 @@
 import { AsyncPipe, NgForOf } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { delay, map, Observable, of, startWith } from 'rxjs';
-import { StatusFeedbackContainerComponent } from '../status-feedback-container/status-feedback-container.component';
+import { ContentViewDirective } from '../content-view.directive';
+import {
+    ErrorViewDirective, LoadingViewDirective, StatusFeedbackContainerComponent
+} from '../status-feedback-container/status-feedback-container.component';
 
 @Component({
     standalone: true,
@@ -20,9 +24,14 @@ import { StatusFeedbackContainerComponent } from '../status-feedback-container/s
         MatIconModule,
         MatMenuModule,
         MatButtonModule,
-        StatusFeedbackContainerComponent
+        StatusFeedbackContainerComponent,
+        ContentViewDirective,
+        ErrorViewDirective,
+        LoadingViewDirective,
+        MatProgressSpinnerModule
     ],
-    styleUrls: ['./dashboard.component.scss']
+    styleUrls: ['./dashboard.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent {
     /** Based on the screen size, switch from standard to one column per row */

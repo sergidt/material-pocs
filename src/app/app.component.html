@@ -22,7 +22,10 @@ addColumn
 <app-status-feedback-container
     [loading]="true"
     [error]="true">
-  <ng-template #errorTmpl>
+  <ng-template contentView>
+    <p>Check contentView</p>
+  </ng-template>
+  <ng-template errorView>
     <mat-icon>error</mat-icon>
     <h3>Error loading realtime connection!</h3>
   </ng-template>
