@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     selector: 'app-root',
@@ -7,58 +7,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit {
-    ngOnInit() {
-
-        /* let PLAIN_NODES = [...names.slice(0, names.length)];//, ...names.slice(0, names.length)];
-
-         function generateTree(
-             indent = 0,
-             maxLevel = MAX_LEVEL,
-             tree: TreeNode = { name: 'top level' }
-         ): TreeNode {
-             if (PLAIN_NODES.length >= CHILDREN_LENGTH) {
-                 tree.children = PLAIN_NODES.slice(0, CHILDREN_LENGTH).filter(_ => !!_);
-                 PLAIN_NODES = PLAIN_NODES.slice(CHILDREN_LENGTH);
-             }
- 
-             const str = Array.from({ length: indent }, (v, k) => '\t').join('');
-             console.log(`${ str } ${ tree.name }`);
- 
-             if (tree.children)
-                 console.log(`${ str } \t ${ tree.children?.map(_ => _.name).join(', ') }`);
- 
-             if (tree.children && indent < MAX_LEVEL) {
-                 tree.children.forEach((node: TreeNode) => {
-                     if (PLAIN_NODES.length >= CHILDREN_LENGTH) {
-                         generateTree(indent + 1, MAX_LEVEL, node);
-                     }
-                 });
-             }
- 
-             return tree;
-         }
- 
-         function sortTree(tree: TreeNode) {
-             if (tree.children) {
-                 tree.children.sort((a: TreeNode, b: TreeNode) => a.name.localeCompare(b.name));
-                 tree.children.forEach(sortTree);
-             }
-         }
- 
-         //console.log(
-         const start = performance.now();
-         const tree = generateTree();
-         console.log('Creating nodes...', performance.now() - start, 'ms');
-         const start2 = performance.now();
-         sortTree(tree);
-         console.log('Sorting nodes...', performance.now() - start2, 'ms');
-         console.log(tree);
- 
-         //);
-         
-         */
-    }
+export class AppComponent {
 }
 
 export const CHILDREN_LENGTH = 5;
