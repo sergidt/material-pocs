@@ -13,15 +13,15 @@ import { AddColumnDirective } from './add-column.directive';
 import { AppComponent } from './app.component';
 import { ApplicationShellComponent } from './application-shell/application-shell.component';
 import { BusinessUnitTypeBusinessUnit } from './but-bu-selector.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContentViewDirective } from './content-view.directive';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { MaterialModule } from './material.module';
 import { SelectableTableComponent } from './selectable-table/selectable-table.component';
 import { SelectedItemsComponent } from './selected-items/selected-items.component';
-import {
-    ErrorViewDirective, StatusFeedbackContainerComponent
-} from './status-feedback-container/status-feedback-container.component';
+import { SkeletonComponent } from './status-feedback-container/skeleton.component';
+import { ErrorViewDirective, StatusFeedbackContainerComponent } from './status-feedback-container/status-feedback-container.component';
 import { StepperNavigatorComponent } from './stepper-navigator/stepper-navigator.component';
+import { SuspenseDirective } from './suspense/suspense.directive';
 
 @NgModule({
     declarations: [
@@ -47,7 +47,9 @@ import { StepperNavigatorComponent } from './stepper-navigator/stepper-navigator
         StatusFeedbackContainerComponent,
         DashboardComponent,
         ErrorViewDirective,
-        ContentViewDirective
+        ContentViewDirective,
+        SuspenseDirective,
+        SkeletonComponent
     ],
     providers: [],
     bootstrap: [AppComponent]

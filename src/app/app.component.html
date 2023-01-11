@@ -12,16 +12,21 @@ addColumn
 
 -->
 
-<!--app-application-shell>
+<app-application-shell>
   <app-stepper-navigator></app-stepper-navigator>
-</app-application-shell-->
-
+</app-application-shell>
+<!--
 <app-dashboard></app-dashboard>
+-->
 
+<!--ng-container *suspense="loading$ | async; hasError: error$ | async">
+  <div>hola</div>
+</ng-container-->
 
+<!--
 <app-status-feedback-container
-    [loading]="true"
-    [error]="true">
+    [loading]="loading$ | async"
+    [data]="data$ | async">
   <ng-template contentView>
     <p>Check contentView</p>
   </ng-template>
@@ -31,6 +36,8 @@ addColumn
   </ng-template>
 </app-status-feedback-container>
 
+
+-->
 <!--
 <ng-template #loadingTmpl>
     <div>loading</div>

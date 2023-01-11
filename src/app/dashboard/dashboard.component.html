@@ -23,16 +23,23 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
+          <div>LOADING? {{card.streams.loading$ | async}}</div>
           <app-status-feedback-container
-              [loading]=" card?.loading$ | async"
-              [error]="card?.error$ | async">
+              [data]=" card.streams.data$ | async"
+              [loading]=" card.streams.loading$ | async"
+              [error]="card.streams.error$ | async">
             <ng-template contentView>
-              <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+              <div>
+                <div [style.font-size.px]="24">{{(card.streams.data$ | async)?.length}}</div>
+                <div class="content">{{card.streams.data$ | async}}</div>
+              </div>
             </ng-template>
+
             <ng-template loadingView>
               <mat-spinner color="warn">
               </mat-spinner>
             </ng-template>
+
             <ng-template errorView>
               <mat-icon>error</mat-icon>
               <h3>Error loading realtime connection!</h3>
