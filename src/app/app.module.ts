@@ -16,8 +16,10 @@ import { BusinessUnitTypeBusinessUnit } from './but-bu-selector.component';
 import { ContentViewDirective } from './content-view.directive';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MaterialModule } from './material.module';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { SelectableTableComponent } from './selectable-table/selectable-table.component';
 import { SelectedItemsComponent } from './selected-items/selected-items.component';
+import { DummyListComponent } from './status-feedback-container/dummy-list.component';
 import { SkeletonComponent } from './status-feedback-container/skeleton.component';
 import { ErrorViewDirective, StatusFeedbackContainerComponent } from './status-feedback-container/status-feedback-container.component';
 import { StepperNavigatorComponent } from './stepper-navigator/stepper-navigator.component';
@@ -49,7 +51,9 @@ import { SuspenseDirective } from './suspense/suspense.directive';
         ErrorViewDirective,
         ContentViewDirective,
         SuspenseDirective,
-        SkeletonComponent
+        SkeletonComponent,
+        DummyListComponent,
+        NavigationBarComponent
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -1,20 +1,13 @@
-<!--<but-bu-selector></but-bu-selector>
+<app-navigation-bar (selectionChanged)="manageNavigation($event)"
+                    [sections]="sections"
+></app-navigation-bar>
 
 
-<app-selected-items></app-selected-items>
-
-<app-selectable-table
-addColumn
-></app-selectable-table>
-
-
-
-
--->
-
-<app-application-shell>
+<app-application-shell
+    *ngIf="selectedIndex === 0">
   <app-stepper-navigator></app-stepper-navigator>
 </app-application-shell>
+
 <!--
 <app-dashboard></app-dashboard>
 -->
@@ -23,22 +16,23 @@ addColumn
   <div>hola</div>
 </ng-container-->
 
-<!--
 <app-status-feedback-container
-    [loading]="loading$ | async"
-    [data]="data$ | async">
+    *ngIf="selectedIndex === 1"
+    [data]="data$|async"
+    [loading]="loading$ | async">
   <ng-template contentView>
-    <p>Check contentView</p>
-  </ng-template>
-  <ng-template errorView>
-    <mat-icon>error</mat-icon>
-    <h3>Error loading realtime connection!</h3>
+    <dummy-list [data]="data$ | async"></dummy-list>
   </ng-template>
 </app-status-feedback-container>
 
 
--->
 <!--
+
+  <ng-template errorView>
+    <mat-icon>error</mat-icon>
+    <h3>Error loading realtime connection!</h3>
+  </ng-template>
+
 <ng-template #loadingTmpl>
     <div>loading</div>
   </ng-template>

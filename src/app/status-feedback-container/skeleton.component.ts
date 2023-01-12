@@ -21,11 +21,6 @@ import { Component } from '@angular/core';
                }
 
                :host {
-                 display: flex;
-                 justify-content: center;
-                 position: absolute;
-                 align-items: center;
-
                  animation: fadein 1.5s infinite;
                }
              `]
