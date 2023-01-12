@@ -67,7 +67,7 @@ export class LoadingViewDirective {
 
       <ng-template #defaultErrorTmpl>
         <mat-icon>report</mat-icon>
-        <h3>Any error occured!</h3>
+        <h3>Any error occurred!</h3>
       </ng-template>
 
       <ng-template #skeleton>
@@ -80,10 +80,12 @@ export class LoadingViewDirective {
 export class StatusFeedbackContainerComponent implements AfterContentInit, OnChanges {
     @Input() loading!: boolean | null;
     @Input() error!: boolean | null;
+
     errorRef: ComponentRef<ErrorComponent> | null = null;
     skeletonRef: ComponentRef<SkeletonComponent> | null = null;
     loadingRef: ComponentRef<LoadingComponent> | null = null;
     dataFirstLoadDone = false;
+
     @ContentChild(ContentViewDirective) contentView!: ContentViewDirective | null;
     @ContentChild(LoadingViewDirective) loadingView: LoadingViewDirective | undefined;
     @ContentChild(ErrorViewDirective) errorView: ErrorViewDirective | undefined;
