@@ -5,10 +5,18 @@ import {
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ContentViewDirective } from '../../content-view.directive';
 import { ErrorComponent } from './error.component';
 import { LoadingComponent } from './loading.component';
 import { SkeletonComponent } from './skeleton.component';
+
+@Directive({
+    selector: '[contentView]',
+    standalone: true
+})
+export class ContentViewDirective {
+    constructor(public tmpl: TemplateRef<any>) {
+    }
+}
 
 @Directive({
     selector: '[errorView]',
@@ -28,7 +36,6 @@ export class ErrorViewDirective {
 export class LoadingViewDirective {
     constructor(public tmpl: TemplateRef<any>) {
     }
-
 }
 
 @Component({
@@ -48,7 +55,8 @@ export class LoadingViewDirective {
         <ng-container *ngTemplateOutlet="errorView?.tmpl || defaultErrorTmpl"></ng-container>
       </div>
 
-      <div class="centered-container">
+      <div class="centered-container"
+           *ngIf="!error">
         <ng-container *ngTemplateOutlet="dataFirstLoadDone ? contentView!.tmpl : skeleton"></ng-container>
       </div>
 
@@ -59,6 +67,7 @@ export class LoadingViewDirective {
 
       <ng-template #defaultErrorTmpl>
         <mat-icon>report</mat-icon>
+        <h3>Any error occured!</h3>
       </ng-template>
 
       <ng-template #skeleton>
@@ -94,43 +103,14 @@ export class StatusFeedbackContainerComponent implements AfterContentInit, OnCha
             this.dataFirstLoadDone = true;
     }
 
-    private init: boolean = false;
+    ngOnChanges(changes: SimpleChanges) {
+        Object.keys(changes).forEach(key => console.log(key, ': ', changes[key].currentValue));
+    }
 
     ngAfterContentInit(): void {
         if (!this.contentView) {
             throw new Error('ContentViewDirective has not been specified.');
         }
-    }
-
-    ngOnChanges(changes: SimpleChanges) {
-        const { loading, error, data } = changes;
-        //  console.log('is loading?', loading);
-        /*
-                if (!this._dataFirstLoadDone && !this.skeletonRef) {
-                    console.log('Creating skeleton');
-                    this.skeletonRef = this._vcr.createComponent(SkeletonComponent);
-                }
-
-                if (data && data.currentValue && !this._dataFirstLoadDone) {
-                    this._dataFirstLoadDone = true;
-                    if (this.skeletonRef)
-                        this._vcr.remove(this._vcr.indexOf(this.skeletonRef.hostView));
-                    console.log('Creating content');
-                    if (this.contentView)
-                        this._vcr.createEmbeddedView(this.contentView.tmpl);
-                }
-
-                if (loading && this._dataFirstLoadDone) {
-                    if (!!loading.currentValue) {
-                        console.log('Creating loading');
-                        this.loadingRef = this._vcr.createComponent(LoadingComponent);
-                    } else if (this.loadingRef?.hostView) {
-                        this._vcr.remove(this._vcr.indexOf(this.loadingRef?.hostView));
-                        this.loadingRef = null;
-                    }
-                }
-
-         */
     }
 }
 
