@@ -4,6 +4,10 @@ form {
   gap: 40px;
 }
 
+mat-toolbar {
+  margin-bottom: 20px;
+}
+
 .rotate {
   animation: spinAround 2s linear infinite;
 }
