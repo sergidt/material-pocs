@@ -10,7 +10,7 @@ import { BehaviorSubject, concatMap, defer, delay, map, Observable, of, startWit
 import { ContentViewDirective } from '../content-view.directive';
 import {
     ErrorViewDirective, LoadingViewDirective, StatusFeedbackContainerComponent
-} from '../status-feedback-container/status-feedback-container.component';
+} from '../suspense/status-feedback-container/status-feedback-container.component';
 
 @Component({
     standalone: true,

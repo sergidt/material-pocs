@@ -6,7 +6,7 @@
 
 
 <app-application-shell
-    *ngIf="selectedIndex === 0">
+    *ngIf="selectedIndex === 1">
   <app-stepper-navigator></app-stepper-navigator>
 </app-application-shell>
 
@@ -18,14 +18,8 @@
   <div>hola</div>
 </ng-container-->
 
-<app-status-feedback-container
-    *ngIf="selectedIndex === 1"
-    [data]="data$|async"
-    [loading]="loading$ | async">
-  <ng-template contentView>
-    <dummy-list [data]="data$ | async"></dummy-list>
-  </ng-template>
-</app-status-feedback-container>
+<app-suspense-example *ngIf="selectedIndex === 0">
+</app-suspense-example>
 
 
 <!--

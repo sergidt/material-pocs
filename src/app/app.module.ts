@@ -19,10 +19,11 @@ import { MaterialModule } from './material.module';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { SelectableTableComponent } from './selectable-table/selectable-table.component';
 import { SelectedItemsComponent } from './selected-items/selected-items.component';
-import { DummyListComponent } from './status-feedback-container/dummy-list.component';
-import { SkeletonComponent } from './status-feedback-container/skeleton.component';
-import { ErrorViewDirective, StatusFeedbackContainerComponent } from './status-feedback-container/status-feedback-container.component';
 import { StepperNavigatorComponent } from './stepper-navigator/stepper-navigator.component';
+import { DummyListComponent } from './suspense/status-feedback-container/dummy-list.component';
+import { SkeletonComponent } from './suspense/status-feedback-container/skeleton.component';
+import { ErrorViewDirective, StatusFeedbackContainerComponent } from './suspense/status-feedback-container/status-feedback-container.component';
+import { SuspenseExampleComponent } from './suspense/suspense-example/suspense-example.component';
 import { SuspenseDirective } from './suspense/suspense.directive';
 
 @NgModule({
@@ -53,7 +54,8 @@ import { SuspenseDirective } from './suspense/suspense.directive';
         SuspenseDirective,
         SkeletonComponent,
         DummyListComponent,
-        NavigationBarComponent
+        NavigationBarComponent,
+        SuspenseExampleComponent
     ],
     providers: [],
     bootstrap: [AppComponent]

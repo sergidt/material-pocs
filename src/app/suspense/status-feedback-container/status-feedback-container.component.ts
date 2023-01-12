@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ContentViewDirective } from '../content-view.directive';
+import { ContentViewDirective } from '../../content-view.directive';
 import { ErrorComponent } from './error.component';
 import { LoadingComponent } from './loading.component';
 import { SkeletonComponent } from './skeleton.component';
@@ -69,6 +69,19 @@ export class LoadingViewDirective {
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatusFeedbackContainerComponent implements AfterContentInit, OnChanges {
+    @Input() loading!: boolean | null;
+    @Input() error!: boolean | null;
+    errorRef: ComponentRef<ErrorComponent> | null = null;
+    skeletonRef: ComponentRef<SkeletonComponent> | null = null;
+    loadingRef: ComponentRef<LoadingComponent> | null = null;
+    dataFirstLoadDone = false;
+    @ContentChild(ContentViewDirective) contentView!: ContentViewDirective | null;
+    @ContentChild(LoadingViewDirective) loadingView: LoadingViewDirective | undefined;
+    @ContentChild(ErrorViewDirective) errorView: ErrorViewDirective | undefined;
+    @ViewChild('anchor', { read: ViewContainerRef, static: true }) _vcr!: ViewContainerRef;
+
+    private _data!: any | null;
+
     get data(): any {
         return this._data;
     }
@@ -76,26 +89,11 @@ export class StatusFeedbackContainerComponent implements AfterContentInit, OnCha
     @Input()
     set data(value: any) {
         this._data = value;
-        
+
         if (this._data)
             this.dataFirstLoadDone = true;
     }
 
-    private _data!: any | null;
-    @Input() loading!: boolean | null;
-    @Input() error!: boolean | null;
-
-    errorRef: ComponentRef<ErrorComponent> | null = null;
-    skeletonRef: ComponentRef<SkeletonComponent> | null = null;
-    loadingRef: ComponentRef<LoadingComponent> | null = null;
-
-    dataFirstLoadDone = false;
-
-    @ContentChild(ContentViewDirective) contentView!: ContentViewDirective | null;
-    @ContentChild(LoadingViewDirective) loadingView: LoadingViewDirective | undefined;
-    @ContentChild(ErrorViewDirective) errorView: ErrorViewDirective | undefined;
-
-    @ViewChild('anchor', { read: ViewContainerRef, static: true }) _vcr!: ViewContainerRef;
     private init: boolean = false;
 
     ngAfterContentInit(): void {

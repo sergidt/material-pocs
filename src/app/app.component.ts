@@ -12,8 +12,8 @@ export class AppComponent {
     selectedIndex = 0;
 
     sections: Array<Section> = [
-        { index: 0, name: 'Stepper Navigator' },
-        { index: 1, name: 'Suspense Component' }
+        { index: 0, name: 'Suspense Component' },
+        { index: 1, name: 'Stepper Navigator' }
     ];
 
     loading1$ = timer(2000).pipe(map(() => false), startWith(true));
