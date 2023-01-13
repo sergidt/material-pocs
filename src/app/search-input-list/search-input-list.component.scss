@@ -1,16 +1,10 @@
 :host {
-  .custom-input-search-container {
-    display: flex;
-  }
+  mat-list {
+    height: 100vh;
+    overflow-y: auto;
 
-  .mat-progress-spinner {
-    display: inline-block;
-    vertical-align: super;
-    top: var(--biss-spacing-xxx-small);
-    right: -2px;
-  }
-
-  mat-icon {
-    color: var(--primary-800);
+    mat-list-item {
+      max-height: 32px;
+    }
   }
 }
