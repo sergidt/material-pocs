@@ -1,0 +1,16 @@
+:host {
+  .custom-input-search-container {
+    display: flex;
+  }
+
+  .mat-progress-spinner {
+    display: inline-block;
+    vertical-align: super;
+    top: var(--biss-spacing-xxx-small);
+    right: -2px;
+  }
+
+  mat-icon {
+    color: var(--primary-800);
+  }
+}
