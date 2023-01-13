@@ -1,8 +1,0 @@
-<div      class="custom-input-search-container">
-  <input #searchInput
-         matInput/>
-  <mat-list>
-    <mat-list-item  *ngIf="noResultsFound$ |async">Not Found</mat-list-item>
-    <mat-list-item  *ngFor="let result of results$ | async">{{config.resultDisplayFn(result)}}</mat-list-item>
-  </mat-list>
-</div>
