@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import {
-    AfterContentInit, ChangeDetectionStrategy, Component, ComponentRef, ContentChild, Directive, Input, OnChanges, SimpleChanges, TemplateRef,
-    ViewChild, ViewContainerRef
+    AfterContentInit, ChangeDetectionStrategy, Component, ComponentRef, ContentChild, Directive, Input, TemplateRef, ViewChild, ViewContainerRef
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -77,7 +76,7 @@ export class LoadingViewDirective {
     styleUrls: ['./status-feedback-container.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StatusFeedbackContainerComponent implements AfterContentInit, OnChanges {
+export class StatusFeedbackContainerComponent implements AfterContentInit {
     @Input() loading!: boolean | null;
     @Input() error!: boolean | null;
 
@@ -103,10 +102,6 @@ export class StatusFeedbackContainerComponent implements AfterContentInit, OnCha
 
         if (this._data)
             this.dataFirstLoadDone = true;
-    }
-
-    ngOnChanges(changes: SimpleChanges) {
-        Object.keys(changes).forEach(key => console.log(key, ': ', changes[key].currentValue));
     }
 
     ngAfterContentInit(): void {
