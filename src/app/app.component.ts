@@ -12,7 +12,8 @@ export class AppComponent {
 
     sections: Array<Section> = [
         { index: 0, name: 'Suspense Component' },
-        { index: 1, name: 'Stepper Navigator' }
+        { index: 1, name: 'Stepper Navigator' },
+        { index: 2, name: 'Search Component' }
     ];
     data = comedy;
 
