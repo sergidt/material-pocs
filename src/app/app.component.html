@@ -4,11 +4,13 @@
 <app-navigation-bar (selectionChanged)="manageNavigation($event)"
                     [sections]="sections"/>
 
-
+<app-suspense-example *ngIf="selectedIndex === 0"/>
 <app-application-shell
     *ngIf="selectedIndex === 1">
   <app-stepper-navigator/>
 </app-application-shell>
+
+<app-search-input-list [dataProvider]="data" *ngIf="selectedIndex === 2"/>
 
 <!--
 <app-dashboard></app-dashboard>
@@ -17,8 +19,6 @@
 <!--ng-container *suspense="loading$ | async; hasError: error$ | async">
   <div>hola</div>
 </ng-container-->
-
-<app-suspense-example *ngIf="selectedIndex === 0"/>
 
 
 <!--
