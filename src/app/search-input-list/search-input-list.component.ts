@@ -74,7 +74,6 @@ export class FilterByPipe<T> implements PipeTransform {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchInputListComponent<T> implements OnInit {
-
     @ContentChild(ResultTemplateDirective) resultTmpl: ResultTemplateDirective | undefined;
     @ViewChild('searchInput', { static: true }) searchInput!: ElementRef;
     @Input() debounceTime = 150;
