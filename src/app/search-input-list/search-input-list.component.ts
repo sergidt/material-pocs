@@ -17,10 +17,10 @@ import { LoadingViewDirective } from '../suspense/status-feedback-container/stat
 
 
 @Directive({
-    selector: '[resultView]',
+    selector: '[resultTmpl]',
     standalone: true
 })
-export class ResultViewDirective {
+export class ResultTemplateDirective {
     constructor(public tmpl: TemplateRef<any>) {
     }
 }
@@ -51,11 +51,15 @@ export class FilterByPipe<T> implements PipeTransform {
     ],
     template: `
       <div class="search-container">
-        <input #searchInput matInput  type="text" placeholder="Search..." autocomplete="off"/>
+        <input #searchInput
+               matInput
+               type="text"
+               placeholder="Search..."
+               autocomplete="off"/>
         <mat-list>
           <mat-list-item *ngIf="resultsCount === 0">No results found filtering by this term</mat-list-item>
           <mat-list-item *ngFor="let item of filteredResults">
-            <ng-container *ngTemplateOutlet="resultView?.tmpl ||defaultTmpl; context: {$implicit: item}"></ng-container>
+            <ng-container *ngTemplateOutlet="resultTmpl?.tmpl ||defaultTmpl; context: {$implicit: item}"></ng-container>
           </mat-list-item>
         </mat-list>
       </div>
@@ -71,7 +75,7 @@ export class FilterByPipe<T> implements PipeTransform {
 })
 export class SearchInputListComponent<T> implements OnInit {
 
-    @ContentChild(ResultViewDirective) resultView: ResultViewDirective | undefined;
+    @ContentChild(ResultTemplateDirective) resultTmpl: ResultTemplateDirective | undefined;
     @ViewChild('searchInput', { static: true }) searchInput!: ElementRef;
     @Input() debounceTime = 150;
 
