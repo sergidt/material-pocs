@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { comedy } from './data';
 import { Section } from './navigation-bar/navigation-bar.component';
+import {MatInputModule} from '@angular/material/input';
 
 @Component({
     selector: 'app-root',

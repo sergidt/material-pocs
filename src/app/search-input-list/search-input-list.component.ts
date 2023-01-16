@@ -8,7 +8,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
 import { MatLegacyListModule } from '@angular/material/legacy-list';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BehaviorSubject, combineLatest, debounceTime, distinctUntilChanged, fromEvent, map, Observable, startWith, takeUntil } from 'rxjs';
+import { MaterialModule } from '../material.module';
 import { DestroyService } from '../services/destroy.service';
 import { LoadingViewDirective } from '../suspense/status-feedback-container/status-feedback-container.component';
 
@@ -45,12 +48,10 @@ export class FilterByPipe<T> implements PipeTransform {
         MatInputModule,
         MatLegacyListModule,
         FilterByPipe,
-        FormsModule,
     ],
     template: `
-      <div>
-            <input #searchInput matInput  type="text"/>
-        
+      <div class="search-container">
+        <input #searchInput matInput  type="text" placeholder="Search..." autocomplete="off"/>
         <mat-list>
           <mat-list-item *ngIf="resultsCount === 0">No results found filtering by this term</mat-list-item>
           <mat-list-item *ngFor="let item of filteredResults">
@@ -109,8 +110,3 @@ export class SearchInputListComponent<T> implements OnInit {
             });
     }
 }
-
-/*
- styles
- */
-
