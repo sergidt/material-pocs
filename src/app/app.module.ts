@@ -15,7 +15,8 @@ import { ApplicationShellComponent } from './application-shell/application-shell
 import { BusinessUnitTypeBusinessUnit } from './but-bu-selector.component';
 import { MaterialModule } from './material.module';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
-import { SearchInputListComponent } from './search-input-list/search-input-list.component';
+import { SearchInputExampleComponent } from './search-input-example/search-input-example.component';
+import { SearchInputListComponent } from './search-input-example/search-input-list/search-input-list.component';
 import { SelectableTableComponent } from './selectable-table/selectable-table.component';
 import { SelectedItemsComponent } from './selected-items/selected-items.component';
 import { StepperNavigatorComponent } from './stepper-navigator/stepper-navigator.component';
@@ -50,7 +51,8 @@ import { SuspenseExampleComponent } from './suspense/suspense-example/suspense-e
         DummyListComponent,
         NavigationBarComponent,
         SuspenseExampleComponent,
-        SearchInputListComponent
+        SearchInputListComponent,
+        SearchInputExampleComponent
     ],
     providers: [],
     bootstrap: [AppComponent]

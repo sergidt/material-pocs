@@ -3,24 +3,16 @@ import {
     ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, Directive, ElementRef, inject, Input, OnInit, Pipe, PipeTransform,
     TemplateRef, ViewChild
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
 import { MatLegacyListModule } from '@angular/material/legacy-list';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BehaviorSubject, combineLatest, debounceTime, distinctUntilChanged, fromEvent, map, Observable, startWith, takeUntil } from 'rxjs';
-import { MaterialModule } from '../material.module';
-import { DestroyService } from '../services/destroy.service';
-import { LoadingViewDirective } from '../suspense/status-feedback-container/status-feedback-container.component';
-
+import { DestroyService } from '../../services/destroy.service';
 
 @Directive({
-    selector: '[resultTmpl]',
+    selector: '[listItemTmpl]',
     standalone: true
 })
-export class ResultTemplateDirective {
+export class ListItemTemplateDirective {
     constructor(public tmpl: TemplateRef<any>) {
     }
 }
@@ -59,7 +51,7 @@ export class FilterByPipe<T> implements PipeTransform {
         <mat-list>
           <mat-list-item *ngIf="resultsCount === 0">No results found filtering by this term</mat-list-item>
           <mat-list-item *ngFor="let item of filteredResults">
-            <ng-container *ngTemplateOutlet="resultTmpl?.tmpl ||defaultTmpl; context: {$implicit: item}"></ng-container>
+            <ng-container *ngTemplateOutlet="listItemTmpl?.tmpl ||defaultTmpl; context: {$implicit: item}"></ng-container>
           </mat-list-item>
         </mat-list>
       </div>
@@ -74,12 +66,12 @@ export class FilterByPipe<T> implements PipeTransform {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchInputListComponent<T> implements OnInit {
-    @ContentChild(ResultTemplateDirective) resultTmpl: ResultTemplateDirective | undefined;
+    @ContentChild(ListItemTemplateDirective) listItemTmpl: ListItemTemplateDirective | undefined;
     @ViewChild('searchInput', { static: true }) searchInput!: ElementRef;
     @Input() debounceTime = 150;
-
     filteredResults: Array<T> = [];
     resultsCount!: number;
+    searchTerm$!: Observable<string>;
 
     @Input()
     set dataProvider(value: Array<T>) {
@@ -87,13 +79,13 @@ export class SearchInputListComponent<T> implements OnInit {
     }
 
     private _destroy$ = inject(DestroyService);
-    private filterBy = new FilterByPipe();
     private _dataProvider$: BehaviorSubject<Array<T>> = new BehaviorSubject<Array<T>>([]);
-
     private _cd = inject(ChangeDetectorRef);
 
+    @Input() filterFn: (item: T, term: string) => boolean = (item: T, term: string) => String(item).toLowerCase().includes(term.toLowerCase());
+
     ngOnInit() {
-        const searchTerm$: Observable<string> = fromEvent<InputEvent>(this.searchInput.nativeElement, 'input')
+        this.searchTerm$ = fromEvent<InputEvent>(this.searchInput.nativeElement, 'input')
             .pipe(
                 debounceTime(this.debounceTime),
                 map(() => this.searchInput.nativeElement.value),
@@ -101,9 +93,9 @@ export class SearchInputListComponent<T> implements OnInit {
                 startWith(''),
             );
 
-        combineLatest([this._dataProvider$, searchTerm$])
+        combineLatest([this._dataProvider$, this.searchTerm$])
             .pipe(
-                map(([dataProvider, term]: [Array<T>, string]) => this.filterBy.transform(dataProvider, term) as Array<T>),
+                map(([dataProvider, term]: [Array<T>, string]) => dataProvider.filter(_ => this.filterFn(_, term)) as Array<T>),
                 takeUntil(this._destroy$)
             )
             .subscribe((filtered: Array<T>) => {
