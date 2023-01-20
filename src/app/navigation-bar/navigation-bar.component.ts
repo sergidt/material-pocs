@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonToggleChange, MatButtonToggleModule } from '@angular/material/button-toggle';
 
 export interface Section {
@@ -13,6 +13,7 @@ export interface Section {
     imports: [CommonModule, MatButtonToggleModule],
     template: `
       <mat-button-toggle-group #navigationBar
+                               [
                                (change)="manageChange($event)">
         <mat-button-toggle *ngFor="let section of sections"
                            [value]="section">{{section.name}}</mat-button-toggle>
@@ -21,7 +22,7 @@ export interface Section {
     styleUrls: ['./navigation-bar.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NavigationBarComponent {
+export class NavigationBarComponent implements AfterViewInit {
     @Output() selectionChanged: EventEmitter<Section> = new EventEmitter<Section>();
 
     private _sections: Array<Section> = [];
@@ -37,7 +38,7 @@ export class NavigationBarComponent {
             this.selectedIndex = 0;
     }
 
-    private _selectedIndex: number = 0;
+    private _selectedIndex: number = -1;
 
     get selectedIndex(): number {
         return this._selectedIndex;
@@ -47,6 +48,11 @@ export class NavigationBarComponent {
         this._selectedIndex = value;
 
         this.selectionChanged.emit(this.sections.at(this._selectedIndex));
+    }
+
+    ngAfterViewInit() {
+        if (this._selectedIndex < 0)
+            this.selectedIndex = 0;
     }
 
     manageChange(event: MatButtonToggleChange) {

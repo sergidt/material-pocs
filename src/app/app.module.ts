@@ -12,6 +12,7 @@ import { AddColumnDirective } from './add-column.directive';
 
 import { AppComponent } from './app.component';
 import { ApplicationShellComponent } from './application-shell/application-shell.component';
+import { AuthExampleComponent } from './authorization/auth-example.component';
 import { BusinessUnitTypeBusinessUnit } from './but-bu-selector.component';
 import { MaterialModule } from './material.module';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
@@ -52,7 +53,8 @@ import { SuspenseExampleComponent } from './suspense/suspense-example/suspense-e
         NavigationBarComponent,
         SuspenseExampleComponent,
         SearchInputListComponent,
-        SearchInputExampleComponent
+        SearchInputExampleComponent,
+        AuthExampleComponent
     ],
     providers: [],
     bootstrap: [AppComponent]
