@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { comedy } from './data';
 import { Section } from './navigation-bar/navigation-bar.component';
-import {MatInputModule} from '@angular/material/input';
 
 @Component({
     selector: 'app-root',
@@ -9,7 +8,7 @@ import {MatInputModule} from '@angular/material/input';
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-    selectedIndex = 0;
+    selectedIndex = -1;
 
     sections: Array<Section> = [
         { index: 0, name: 'Suspense Component' },

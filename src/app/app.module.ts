@@ -13,6 +13,7 @@ import { AddColumnDirective } from './add-column.directive';
 import { AppComponent } from './app.component';
 import { ApplicationShellComponent } from './application-shell/application-shell.component';
 import { BusinessUnitTypeBusinessUnit } from './but-bu-selector.component';
+import { IndexedDBExampleComponent } from './indexedDB/indexed-db-example/indexed-db-example.component';
 import { MaterialModule } from './material.module';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { SearchInputExampleComponent } from './search-input-example/search-input-example.component';
@@ -52,7 +53,8 @@ import { SuspenseExampleComponent } from './suspense/suspense-example/suspense-e
         NavigationBarComponent,
         SuspenseExampleComponent,
         SearchInputListComponent,
-        SearchInputExampleComponent
+        SearchInputExampleComponent,
+        IndexedDBExampleComponent
     ],
     providers: [],
     bootstrap: [AppComponent]
