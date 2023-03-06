@@ -1,0 +1,42 @@
+.table {
+    border-radius: 4px;
+    width: 100%;
+    min-width: 400px;
+    height: 100%;
+    border: solid 1px grey;
+
+    .headers {
+        height: 38px;
+        background-color: #e4e5e6;;
+    }
+
+    .row {
+        height: 48px;
+        ;
+    &:nth-child(even) {
+        background-color: white;
+    }
+
+    &:nth-child(odd) {
+        background-color: #f1f1f1;
+    }
+}
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+:host {
+    animation: fadein 1.5s infinite;
+}

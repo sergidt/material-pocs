@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
 import { MatLegacyListModule } from '@angular/material/legacy-list';
-import { BehaviorSubject, combineLatest, debounceTime, distinctUntilChanged, fromEvent, map, Observable, startWith, takeUntil } from 'rxjs';
+import { BehaviorSubject, combineLatest, debounceTime, distinctUntilChanged, fromEvent, map, Observable, share, startWith, takeUntil } from 'rxjs';
 import { DestroyService } from '../../services/destroy.service';
 
 @Directive({
@@ -65,7 +65,7 @@ export class FilterByPipe<T> implements PipeTransform {
     styleUrls: ['./search-input-list.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchInputListComponent<T> implements OnInit {
+export class SearchInputListComponent<T = unknown> implements OnInit {
     @ContentChild(ListItemTemplateDirective) listItemTmpl: ListItemTemplateDirective | undefined;
     @ViewChild('searchInput', { static: true }) searchInput!: ElementRef;
     @Input() debounceTime = 150;
@@ -91,6 +91,7 @@ export class SearchInputListComponent<T> implements OnInit {
                 map(() => this.searchInput.nativeElement.value),
                 distinctUntilChanged(),
                 startWith(''),
+                share()
             );
 
         combineLatest([this._dataProvider$, this.searchTerm$])

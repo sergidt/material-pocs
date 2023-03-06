@@ -10,10 +10,6 @@ body {
   overflow: hidden;
 }
 
-.highlight {
-  color: red;
-}
-
 .mat-menu-content {
 
 }
@@ -33,4 +29,9 @@ body {
   &:hover {
     background-color: rgba($color: #bcbebf, $alpha: 1);
   }
+}
+
+.highlight {
+  background: #FFE6A0;
+  color: #2e2f30;
 }
