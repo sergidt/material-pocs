@@ -13,9 +13,11 @@ import { AddColumnDirective } from './add-column.directive';
 import { AppComponent } from './app.component';
 import { ApplicationShellComponent } from './application-shell/application-shell.component';
 import { BusinessUnitTypeBusinessUnit } from './but-bu-selector.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { IndexedDBExampleComponent } from './indexedDB/indexed-db-example/indexed-db-example.component';
 import { MaterialModule } from './material.module';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { AccessControlDirective } from './rbac/access-control.directive';
 import { SearchInputExampleComponent } from './search-input-example/search-input-example.component';
 import { SearchInputListComponent } from './search-input-example/search-input-list/search-input-list.component';
 import { SelectableTableComponent } from './selectable-table/selectable-table.component';
@@ -30,7 +32,7 @@ import { SuspenseExampleComponent } from './suspense/suspense-example/suspense-e
     declarations: [
         AppComponent,
         SelectableTableComponent,
-        AddColumnDirective,
+        AddColumnDirective
     ],
     imports: [
         MaterialModule,
@@ -54,9 +56,11 @@ import { SuspenseExampleComponent } from './suspense/suspense-example/suspense-e
         SuspenseExampleComponent,
         SearchInputListComponent,
         SearchInputExampleComponent,
-        IndexedDBExampleComponent
+        IndexedDBExampleComponent,
+        DashboardComponent,
+        AccessControlDirective,
     ],
-    providers: [],
+    providers: [AccessControlDirective],
     bootstrap: [AppComponent]
 })
 export class AppModule {
