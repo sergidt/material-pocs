@@ -1,27 +1,27 @@
 <mat-toolbar color="primary">Angular PoCs
 </mat-toolbar>
 
-
+<ng-container *requiredRole="OR_ROLES_OPERATOR">
 <app-navigation-bar (selectionChanged)="manageNavigation($event)"
                     [sections]="sections"/>
-
 <app-suspense-example *ngIf="selectedIndex === 0"/>
+
 <app-application-shell
     *ngIf="selectedIndex === 1">
   <app-stepper-navigator/>
 </app-application-shell>
 
-<app-search-input-example *ngIf="selectedIndex === 2"/>
 
+<app-search-input-example  *ngIf="selectedIndex === 2"/>
+</ng-container>
 
 <!--
 <app-indexed-db-example/>
 -->
 
 
-<!--
-<app-dashboard></app-dashboard>
--->
+
+<!--  <app-dashboard ></app-dashboard>-->
 
 <!--ng-container *suspense="loading$ | async; hasError: error$ | async">
   <div>hola</div>
