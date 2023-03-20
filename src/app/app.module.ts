@@ -18,6 +18,7 @@ import { IndexedDBExampleComponent } from './indexedDB/indexed-db-example/indexe
 import { MaterialModule } from './material.module';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { AccessControlDirective } from './rbac/access-control.directive';
+import { RolesAndPermissionsComponent } from './roles-permissions/roles-permissions.component';
 import { SearchInputExampleComponent } from './search-input-example/search-input-example.component';
 import { SearchInputListComponent } from './search-input-example/search-input-list/search-input-list.component';
 import { SelectableTableComponent } from './selectable-table/selectable-table.component';
@@ -59,6 +60,7 @@ import { SuspenseExampleComponent } from './suspense/suspense-example/suspense-e
         IndexedDBExampleComponent,
         DashboardComponent,
         AccessControlDirective,
+        RolesAndPermissionsComponent,
     ],
     providers: [AccessControlDirective],
     bootstrap: [AppComponent]

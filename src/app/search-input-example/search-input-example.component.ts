@@ -26,10 +26,10 @@ interface Item {
               <div class="item">
                 <span class="label mat-body-2"
                       [searchableHighlight]="toItem(item).property"
-                      [title]="item.label"></span>
+                      [title]="toItem(item).property"></span>
                 <span class="value mat-body-1"
                       [searchableHighlight]="toItem(item).value"
-                      [title]="item.value"></span>
+                      [title]="toItem(item).value"></span>
               </div>
             </ng-template>
           </app-search-input-list>

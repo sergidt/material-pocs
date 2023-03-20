@@ -12,14 +12,15 @@ export class AppComponent {
     selectedIndex = -1;
 
     sections: Array<Section> = [
-        { index: 0, name: 'Suspense Component' },
-        { index: 1, name: 'Stepper Navigator' },
-        { index: 2, name: 'Search Component' }
+        { index: 0, name: 'Roles & Permissions' },
+        { index: 1, name: 'Suspense Component' },
+        { index: 2, name: 'Stepper Navigator' },
+        { index: 3, name: 'Search Component' }
     ];
     data = comedy;
 
-    OR_ROLES_OPERATOR= OR_ROLES_OPERATOR
-    AND_ROLES_OPERATOR= AND_ROLES_OPERATOR
+    OR_ROLES_OPERATOR = OR_ROLES_OPERATOR;
+    AND_ROLES_OPERATOR = AND_ROLES_OPERATOR;
 
     manageNavigation(section: Section) {
         this.selectedIndex = section.index;
