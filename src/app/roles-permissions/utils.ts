@@ -67,9 +67,9 @@ const CRUD_ACTIONS = ['create', 'delete', 'update', 'read'];
 const microservicesMap = new Map<string, Array<string>>([
     ['master-tenant-management-api', ['tenant', 'user', 'tenant-module']],
     ['organizational-structure-management-api', ['business-units', 'business-unit-types', 'zones', 'service-departments']],
-    ['customer-tenant-management-api', ['roles', 'users, ']],
+    ['customer-tenant-management-api', ['roles', 'users']],
     ['device-management-api', ['scales', 'edges', 'devices']],
-    ['data-management-api', ['tares', 'barcodes', 'extra-texts']],
+    ['data-management-api', ['tares', 'barcodes', 'extra-texts', 'plu']],
     ['label-management-api', ['label-graphics', 'label-formats']],
     ['nutrition-management-api', ['nutritions', 'nutrition-values', 'nutrition-templates']]
 ]);
