@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import uniqBy from 'lodash-es/uniqBy';
-import { getAllRoles, PermissionDTO } from './utils';
+import {
+    AggregationConfig, createAggregationTableDefinitions, formatAggregationTableDefinitions, getAllModules, getDistinctActionNames,
+    getPermissionsByEntityAndAction, getRoleAggregations, ROLES, SELECTED_PERMISSIONS
+} from './utils';
 
 @Component({
     selector: 'app-roles-permissions',
@@ -15,9 +17,34 @@ export class RolesAndPermissionsComponent implements OnInit {
     ngOnInit() {
         console.clear();
 
-        console.log(getAllRoles().push({id: '89063f7a-ea87-491e-856b-00f08a8f74ee', claim: 'master-tenant-management-api.tenant.read'},
-            {id: '89063f7a-ea87-491e-856b-00f08a8f74ee', claim: 'master-tenant-management-api.tenant.read'}));
-        const distinctClaims = uniqBy(getAllRoles(),'claim');
-        console.log('DistinctClaims: ', distinctClaims);
+        console.log('Modules:', getAllModules());
+
+        console.log(SELECTED_PERMISSIONS);
+
+        const distinctActions = getDistinctActionNames(SELECTED_PERMISSIONS);
+
+        const headers = ['                        '].concat(distinctActions.map(actionName => actionName.padStart(13))).join(' | ');
+
+        const config: AggregationConfig = {
+            actions: distinctActions,
+            aggregationsByRole: getRoleAggregations(ROLES[0]),
+            permissionsByEntityAndAction: getPermissionsByEntityAndAction(SELECTED_PERMISSIONS)
+        };
+
+        console.time('Generate Aggregation Table Definitions');
+
+        const data = createAggregationTableDefinitions(config);
+        console.timeEnd('Generate Aggregation Table Definitions');
+
+        console.log(data);
+
+        data.forEach(agg => {
+            console.log('\n' + agg.name + '\n=====================================================================================================================================================\n\n');
+            console.log(headers);
+            const rows = formatAggregationTableDefinitions(agg);
+            console.log(rows.join('\n'));
+            console.log('\n\n');
+        });
+
     }
 }
